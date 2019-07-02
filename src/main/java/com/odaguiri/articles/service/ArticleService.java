@@ -33,8 +33,17 @@ public class ArticleService {
 		return convertToDto(articleRepository.findById(id).get());
 	}
 	
+	public ArticleDto save(ArticleDto articleDto) {
+		Article newArticle = articleRepository.save(convertToEntity(articleDto));
+		return convertToDto(newArticle);
+	}
+	
 	private ArticleDto convertToDto(Article article) {
 		return modelMapper.map(article,  ArticleDto.class);
+	}
+	
+	private Article convertToEntity(ArticleDto articleDto) {
+		return modelMapper.map(articleDto,  Article.class);
 	}
 	
 }

@@ -44,8 +44,8 @@ public class ArticleController {
 	@PostMapping(path = "/v1/articles")
 	@ResponseStatus(HttpStatus.CREATED)
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "Article created") })
-	public void save(@Valid @RequestBody ArticleDto article) {
-		
+	public void save(@Valid @RequestBody ArticleDto articleDto) {
+		articleService.save(articleDto);
 	}
 	
 }
